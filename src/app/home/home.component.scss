@@ -1,0 +1,106 @@
+/** @format */
+
+.home__section {
+  .content {
+    padding: 20px;
+    .card {
+      background: linear-gradient(
+        0deg,
+        rgba(101, 39, 190, 1) 35%,
+        rgba(150, 129, 235, 1) 100%
+      );
+      padding: 30px 15px;
+      border-radius: 10px;
+      box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.2);
+      p,
+      span,
+      h1 {
+        color: #fff;
+        margin: 0;
+      }
+      .current__text {
+        font-size: 1rem;
+        margin: 0;
+      }
+      .current__amount {
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin: 0 0 10px 0;
+      }
+      .other__info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+      }
+      .last__consumption {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+// styles.scss
+hr {
+  border-color: dark;
+}
+
+h3.title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.latest__transaction {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+
+  .amount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+  }
+  h5,
+  h6,
+  p {
+    margin: 0;
+  }
+
+  h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: var(--ion-color-success);
+  }
+
+  h5.successful {
+    color: green;
+  }
+
+  h5.failed {
+    color: red;
+  }
+
+  h5.not-paid {
+    color: orange;
+  }
+
+  h6 {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: auto;
+  }
+}

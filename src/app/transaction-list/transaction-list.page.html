@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>transaction-list</ion-title>
+    <ion-button routerLink="/folder/accounts" slot="end"
+      >Return to Accounts</ion-button
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <h3 class="title">Latest Transactions</h3>
+  <div class="latest__transactions">
+    <div
+      *ngFor="let transaction of transactions.reverse()"
+      class="latest__transaction"
+    >
+      <h5 [ngClass]="{ 'failed-transaction': transaction.failed }">
+        {{ transaction.title }}
+      </h5>
+      <div class="amount">
+        <h6>{{ transaction.date }}</h6>
+        <p>&#8369; {{ transaction.amount }}</p>
+      </div>
+    </div>
+  </div>
+</ion-content>

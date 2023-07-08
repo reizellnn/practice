@@ -1,0 +1,32 @@
+<ion-list>
+  <ion-item lines="none">
+    <ion-searchbar (ionInput)="handleInput($event)"></ion-searchbar>
+  </ion-item>
+  <ion-list>
+    <ion-item
+      *ngFor="let transaction of getTransactions()"
+      class="transaction-item"
+      lines="none"
+    >
+      <ion-label class="transaction-label">
+        <h3
+          [ngClass]="{
+            successful: transaction.title === 'Payment Successful',
+            failed: transaction.title === 'Failed',
+            'not-paid': transaction.title === 'Not Paid'
+          }"
+        >
+          {{ transaction.title }}
+        </h3>
+
+        <p>Due: {{ transaction.date }}</p>
+        <p>Consumption: {{ transaction.consumption }} cubic meters</p>
+        <p>Rate: {{ transaction.rate }}</p>
+        <p>
+          Transaction Date: {{ transaction.paymentDate | date : "MMM d, yyyy" }}
+        </p>
+        <p>Amount: {{ transaction.amount }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-list>

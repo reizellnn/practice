@@ -1,3 +1,5 @@
+<!-- @format -->
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -8,14 +10,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ folder }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ng-container *ngIf="folder === 'home'">
+    <app-home></app-home>
+  </ng-container>
 
-  <div id="container">
-    <strong class="capitalize">{{ folder }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ng-container *ngIf="folder === 'accounts'">
+    <app-accounts></app-accounts>
+  </ng-container>
+
+  <ng-container *ngIf="folder === 'bills'">
+    <app-bills></app-bills>
+  </ng-container>
+
+  <ng-container *ngIf="folder === 'transactions'">
+    <app-transactions></app-transactions>
+  </ng-container>
 </ion-content>

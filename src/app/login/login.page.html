@@ -1,0 +1,50 @@
+<!-- @format -->
+
+<ion-content [fullscreen]="true">
+  <section class="main__container">
+    <div class="login__container">
+      <form class="login__form">
+        <div class="welcome__container">
+          <h1 class="welcome__text">Welcome</h1>
+          <p class="login__text">Login to continue</p>
+        </div>
+        <div class="input__container">
+          <ion-input
+            label="Username"
+            label-placement="floating"
+            fill="outline"
+            type="text"
+            name="username"
+            [(ngModel)]="username"
+            required
+          ></ion-input>
+        </div>
+        <div class="input__container">
+          <ion-input
+            label="Password"
+            label-placement="floating"
+            fill="outline"
+            type="password"
+            name="password"
+            [(ngModel)]="password"
+            required
+          ></ion-input>
+        </div>
+        <div class="forgot__password">
+          <a href="#" class="forgot__password__link"> Forgot Password? </a>
+        </div>
+        <div class="button">
+          <ion-button
+            type="submit"
+            expand="full"
+            class="login__button"
+            (click)="login()"
+          >
+            Login
+          </ion-button>
+          <ion-router-link routerLink="/signup"> Sign Up </ion-router-link>
+        </div>
+      </form>
+    </div>
+  </section>
+</ion-content>
