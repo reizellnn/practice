@@ -8,7 +8,11 @@ import { DataService } from '../services/data.service';
 export class TransactionsComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
-  ngOnInit() {}
+  transactions: any = [];
+
+  ngOnInit() {
+    this.transactions = this.getTransactions();
+  }
 
   getTransactions() {
     let transactions: any[] = [];

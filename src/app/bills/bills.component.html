@@ -1,3 +1,57 @@
-<p>
-  bills works!
-</p>
+<div class="water-bill" *ngIf="unpaidBills">
+  <div class="bill-header">
+    <h1 class="bill-header__title">Water Bill</h1>
+    <p class="bill-header__address">Address:</p>
+    <p class="bill-header__contact">Contact:</p>
+  </div>
+  <table class="bill-table" border="1">
+    <thead>
+      <tr>
+        <th colspan="5">Statement of Account</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Bill Date</th>
+        <th>Due Date</th>
+        <th colspan="2">Consumption</th>
+        <th rowspan="2">Amount</th>
+      </tr>
+      <tr>
+        <td rowspan="2">{{ unpaidBills.date }}</td>
+        <td rowspan="2">{{ unpaidBills.dueDate }}</td>
+        <th>Previous Reading</th>
+        <th>Current Reading</th>
+      </tr>
+      <tr>
+        <td>{{ unpaidBills.previousConsumption }}</td>
+        <td>{{ unpaidBills.currentConsumption }}</td>
+        <td>{{ unpaidBills.currentAmount }}</td>
+      </tr>
+      <tr>
+        <th colspan="5">Summary</th>
+      </tr>
+      <tr>
+        <th colspan="2">Consumption</th>
+        <th>Amount</th>
+        <th>Rate</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td colspan="2">{{ unpaidBills.currentConsumption }}</td>
+        <td>{{ unpaidBills.currentAmount }}</td>
+        <td>{{ unpaidBills.rate }}</td>
+        <td>{{ unpaidBills.currentAmount }}</td>
+      </tr>
+      <tr>
+        <td colspan="5">
+          Please pay on or before the due date to avoid penalty.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="water-bill" *ngIf="unpaidBills == null">
+  <h3 class="water-bill__no-bill">All bills are paid.</h3>
+</div>

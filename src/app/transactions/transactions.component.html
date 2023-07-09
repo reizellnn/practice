@@ -4,7 +4,7 @@
   </ion-item>
   <ion-list>
     <ion-item
-      *ngFor="let transaction of getTransactions()"
+      *ngFor="let transaction of transactions.slice().reverse()"
       class="transaction-item"
       lines="none"
     >
