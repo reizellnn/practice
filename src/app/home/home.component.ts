@@ -50,10 +50,6 @@ export class HomeComponent implements OnInit {
     return formattedDate;
   }
 
-  formatDecimal(number: number): string {
-    return number.toFixed(2);
-  }
-
   getUpdatedDate(date: string, numberOfDaysToAdd: number): string {
     const dateParts = date.split('-');
     const month = Number(dateParts[0]) - 1;

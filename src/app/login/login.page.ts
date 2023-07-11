@@ -15,7 +15,12 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem('userId')) {
-      this.router.navigate(['/folder/home']);
+      //get userType on localStorage
+      if (localStorage.getItem('userType') === 'user') {
+        this.router.navigate(['/folder/home']);
+      } else {
+        this.router.navigate(['/folder/dashboard']);
+      }
     }
   }
 
@@ -25,7 +30,14 @@ export class LoginPage implements OnInit {
     if (this.username != '' && this.password != '') {
       if (this.dataService.login(this.username, this.password)) {
         this.errorMessages = '';
-        this.router.navigate(['/folder/home']);
+        //set to local storage is login is successful
+        localStorage.setItem('showAlert', 'true');
+        if (localStorage.getItem('userType') === 'user') {
+          this.router.navigate(['/folder/home']);
+        }
+        if (localStorage.getItem('userType') === 'staff') {
+          this.router.navigate(['/folder/dashboard']);
+        }
       } else {
         this.errorMessages = 'Invalid Credentials';
       }

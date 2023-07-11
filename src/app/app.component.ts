@@ -1,7 +1,5 @@
-/** @format */
-
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { DataService } from './services/data.service';
 
 @Component({
@@ -12,22 +10,32 @@ import { DataService } from './services/data.service';
 export class AppComponent {
   public appPages: any[] = [];
 
-  constructor(private router: Router, private dataService: DataService) {}
-
   user: any = {};
-  ngOnInit() {
-    //get from local storage if user is admin or not,i s usser set to false for now
-    const isAdmin = localStorage.getItem('userType') == 'user' ? false : true;
 
-    if (isAdmin) {
+  constructor(private router: Router, private dataService: DataService) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.updateAppPages();
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.updateAppPages();
+
+    let userID = localStorage.getItem('userId')?.toString();
+
+    if (userID) {
+      this.user = this.dataService.getUserDetails(userID);
+    }
+  }
+
+  updateAppPages() {
+    if (localStorage.getItem('userType') === 'staff') {
       this.appPages = [
-        { title: 'Dashboard', url: '/dashboard', icon: 'analytics' },
+        { title: 'Dashboard', url: '/folder/dashboard', icon: 'analytics' },
         { title: 'Accounts', url: '/folder/accounts', icon: 'wallet' },
-        {
-          title: 'Transactions',
-          url: '/transactions',
-          icon: 'swap-horizontal',
-        },
+        { title: 'Set Bill', url: '/folder/set-bill', icon: 'receipt' },
       ];
     } else {
       this.appPages = [
@@ -39,12 +47,6 @@ export class AppComponent {
         },
         { title: 'Bill', url: '/folder/bills', icon: 'document-text' },
       ];
-    }
-
-    let userID = localStorage.getItem('userId')?.toString();
-
-    if (userID) {
-      this.user = this.dataService.getUserDetails(userID);
     }
   }
 

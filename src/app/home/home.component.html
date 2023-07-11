@@ -1,68 +1,70 @@
 <!-- @format -->
 
 <section class="home__section">
-  <div class="content">
-    <div class="card">
-      <ng-container *ngIf="balance">
-        <p class="current__text">Current amount due</p>
-        <h1 class="current__amount">
-          &#8369; {{ formatDecimal(balance.amount) }}
-        </h1>
-        <div class="other__info">
-          <p class="other__info__text">
-            Date:
-            <br />
-            <span class="other__info__date">{{ balance.date }}</span>
-          </p>
-          <p class="other__info__text">
-            Consumption:
-            <br />
-            <span class="other__info__date"
-              >{{ balance.consumption }} cu.m</span
-            >
-          </p>
+    <div class="content">
+        <div class="card">
+            <ng-container *ngIf="balance">
+                <p class="current__text">Current amount due</p>
+                <h1 class="current__amount">
+                    &#8369; {{ balance.amount.toFixed(2) }}
+                </h1>
+                <div class="other__info">
+                    <p class="other__info__text">
+                        Date:
+                        <br />
+                        <span class="other__info__date">
+                            {{ balance.date }}
+                        </span>
+                    </p>
+                    <p class="other__info__text">
+                        Consumption:
+                        <br />
+                        <span class="other__info__date">
+                            {{ balance.consumption }} cu.m
+                        </span>
+                    </p>
+                </div>
+                <div class="last__consumption">
+                    <p class="rate__text">
+                        Rate
+                        <br />
+                        <span class="rate__price">
+                            &#8369; {{ balance.rate }} / cu.m
+                        </span>
+                    </p>
+                    <p class="last__consumption__text">
+                        Due Date
+                        <br />
+                        <span class="last__consumption__price">
+                            {{ getUpdatedDate(balance.date, 14) }}
+                        </span>
+                    </p>
+                </div>
+            </ng-container>
+            <ng-container *ngIf="balance">
+                <p class="no-balance__text">All bills are settled.</p>
+            </ng-container>
         </div>
-        <div class="last__consumption">
-          <p class="rate__text">
-            Rate
-            <br />
-            <span class="rate__price">&#8369; {{ balance.rate }} / cu.m</span>
-          </p>
-          <p class="last__consumption__text">
-            Due Date
-            <br />
-            <span class="last__consumption__price">{{
-              getUpdatedDate(balance.date, 14)
-            }}</span>
-          </p>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="balance">
-        <p class="no-balance__text">All bills are settled.</p>
-      </ng-container>
-    </div>
 
-    <hr color="dark" />
-    <h3 class="title">Latest Transactions</h3>
-    <div class="latest__transactions">
-      <div
-        *ngFor="let transaction of transactions.reverse()"
-        class="latest__transaction"
-      >
-        <h5
-          [ngClass]="{
-            successful: transaction.title === 'Payment Successful',
-            failed: transaction.title === 'Failed',
-            'not-paid': transaction.title === 'Not Paid'
-          }"
-        >
-          {{ transaction.title }}
-        </h5>
-        <div class="amount">
-          <h6>{{ formatDate(transaction.date) }}</h6>
-          <p>&#8369; {{ transaction.amount }}</p>
+        <hr color="dark" />
+        <h3 class="title">Latest Transactions</h3>
+        <div class="latest__transactions">
+            <div
+                *ngFor="let transaction of transactions.reverse()"
+                class="latest__transaction">
+                <h5
+                    [ngClass]="{
+                        successful: transaction.title === 'Payment Successful',
+                        failed: transaction.title === 'Failed',
+                        'not-paid': transaction.title === 'Not Paid'
+                    }">
+                    {{ transaction.title }}
+                </h5>
+                <div class="amount">
+                    <h6>{{ formatDate(transaction.date) }}</h6>
+                    <p>&#8369; {{ transaction.amount }}</p>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>

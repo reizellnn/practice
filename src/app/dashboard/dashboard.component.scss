@@ -1,0 +1,13 @@
+.dashboard__container {
+  .card__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    ion-card {
+      ion-card-header {
+        ion-card-title {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

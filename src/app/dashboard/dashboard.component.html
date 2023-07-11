@@ -1,0 +1,39 @@
+<div class="dashboard__container">
+  <div class="card__container">
+    <ion-card color="primary">
+      <ion-card-header>
+        <ion-card-title>Users</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h1>{{ totalUsers }}</h1>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="danger">
+      <ion-card-header>
+        <ion-card-title>Unpaid Bills</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h1>{{ unpaidBills }}</h1>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="success">
+      <ion-card-header>
+        <ion-card-title>Consumption</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h1>{{ yearlyConsumption }} <small>m&#179;</small></h1>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="warning">
+      <ion-card-header>
+        <ion-card-title>Accounts</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <h1>&#8369;{{ totalIncome }}</h1>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>
